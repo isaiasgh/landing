@@ -19,11 +19,13 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
 
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   <link rel="stylesheet" href="./css/style.css">
 </head>
 
@@ -682,9 +684,9 @@
                 </a>
                 <div class="product-content">
                   <h5 class="element-title text-uppercase fs-5 mt-3">
-                    <a href="index.html">Vinilo de Edición Limitada - 'The Dark Side of the Moon</a>
+                    <a href="index.html">Vinilo de Edición Limitada - 'The Dark Side of the Moon'</a>
                   </h5>
-                  <a href="#" class="text-decoration-none" data-after="Add to cart"><span>$45.00</span></a>
+                  <a href="#" class="text-decoration-none" data-after="Añadir al carrito"><span>$45.00</span></a>
                 </div>
               </div>
             </div>
@@ -704,7 +706,7 @@
                   <h5 class="text-uppercase fs-5 mt-3">
                     <a href="index.html">Figura de Colección - Darth Vader</a>
                   </h5>
-                  <a href="#" class="text-decoration-none" data-after="Add to cart"><span>$80.00</span></a>
+                  <a href="#" class="text-decoration-none" data-after="Añadir al carrito"><span>$80.00</span></a>
                 </div>
               </div>
             </div>
@@ -724,7 +726,7 @@
                   <h5 class="text-uppercase fs-5 mt-3">
                     <a href="index.html">Póster Cinemático - 'The Godfather'</a>
                   </h5>
-                  <a href="#" class="text-decoration-none" data-after="Add to cart"><span>$25.00</span></a>
+                  <a href="#" class="text-decoration-none" data-after="Añadir al carrito"><span>$25.00</span></a>
                 </div>
               </div>
             </div>
@@ -744,7 +746,7 @@
                   <h5 class="text-uppercase fs-5 mt-3">
                     <a href="index.html">Poster - The Beatles</a>
                   </h5>
-                  <a href="#" class="text-decoration-none" data-after="Add to cart"><span>$35.00</span></a>
+                  <a href="#" class="text-decoration-none" data-after="Añadir al carrito"><span>$35.00</span></a>
                 </div>
               </div>
             </div>
@@ -764,7 +766,7 @@
                   <h5 class="text-uppercase fs-5 mt-3">
                     <a href="index.html">Pack de Púas "SNM" - Charly García</a>
                   </h5>
-                  <a href="#" class="text-decoration-none" data-after="Add to cart"><span>$20.00</span></a>
+                  <a href="#" class="text-decoration-none" data-after="Añadir al carrito"><span>$20.00</span></a>
                 </div>
               </div>
             </div>
@@ -847,7 +849,7 @@
                   <h5 class="text-uppercase fs-5 mt-3">
                     <a href="index.html">The Smiths</a>
                   </h5>
-                  <a href="index.html" class="text-decoration-none" data-after="Visitar"><span>177 artículos/span></a>
+                  <a href="index.html" class="text-decoration-none" data-after="Visitar"><span>177 artículos</span></a>
                 </div>
               </div>
             </div>
@@ -968,42 +970,22 @@
 
   <section class="testimonials py-5 bg-light">
     <div class="section-header text-center mt-5">
-      <h3 class="section-title">WE LOVE GOOD COMPLIMENT</h3>
+      <h3 class="text-uppercase">Comentarios más recientes</h3>
     </div>
-    <div class="swiper testimonial-swiper overflow-hidden my-5">
-      <div class="swiper-wrapper d-flex">
-        <div class="swiper-slide">
-          <div class="testimonial-item text-center">
-            <blockquote>
-              <p>“More than expected crazy soft, flexible and best fitted white simple denim shirt.”</p>
-              <div class="review-title text-uppercase">casual way</div>
-            </blockquote>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="testimonial-item text-center">
-            <blockquote>
-              <p>“Best fitted white denim shirt more than expected crazy soft, flexible</p>
-              <div class="review-title text-uppercase">uptop</div>
-            </blockquote>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="testimonial-item text-center">
-            <blockquote>
-              <p>“Best fitted white denim shirt more white denim than expected flexible crazy soft.”</p>
-              <div class="review-title text-uppercase">Denim craze</div>
-            </blockquote>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="testimonial-item text-center">
-            <blockquote>
-              <p>“Best fitted white denim shirt more than expected crazy soft, flexible</p>
-              <div class="review-title text-uppercase">uptop</div>
-            </blockquote>
-          </div>
-        </div>
+
+  <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner" id="testimonios">
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
       </div>
     </div>
     <div class="testimonial-swiper-pagination d-flex justify-content-center mb-5"></div>
@@ -1263,9 +1245,32 @@
           <div class="subscribe-header text-center pb-3">
             <h3 class="section-title text-uppercase">Suscríbete a nuestra newsletter</h3>
           </div>
-          <form id="form" class="d-flex flex-wrap gap-2">
-            <input type="text" name="email" placeholder="Your Email Addresss" class="form-control form-control-lg"
-              id="form_email">
+          <form id="form" class="gap-2">
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <input type="text" name="name" placeholder="Nombre" class="form-control form-control-lg" id="form_name">
+              </div>
+              <div class="col-md-6">
+                <input type="text" name="email" placeholder="Email" class="form-control form-control-lg" id="form_email">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-12">
+                <select name="product_type" class="form-control form-control-lg" id="form_product_type">
+                  <option value="" disabled selected>Selecciona una categoía de producto</option>
+                  <option value="posters">Posters</option>
+                  <option value="vinyls">Vinilos</option>
+                  <option value="stickers">Stickers</option>
+                  <option value="figures">Figuras</option>
+                  <option value="puzzles">Rompecabezas</option>
+                </select>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-12">
+                <textarea name="message" placeholder="Déjanos tu mensaje" class="form-control form-control-lg" id="form_message" rows="4"></textarea>
+              </div>
+            </div>
             <button class="btn btn-dark btn-lg text-uppercase w-100">Sign Up</button>
           </form>
         </div>
@@ -1502,6 +1507,7 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
   <script src="js/script.min.js"></script>
   <script src="js/main.js"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </body>
 
 </html>

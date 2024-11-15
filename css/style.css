@@ -19,3 +19,20 @@
     object-fit: cover;
     height: 350px;
 }
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(180deg) brightness(0.5);
+}
+
+.testimonial-item {
+    padding: 0 10rem; /* Padding grande para pantallas grandes */
+  }
+  
+  /* Media query para pantallas más pequeñas */
+  @media (max-width: 768px) {
+    .testimonial-item {
+      padding: 0 2.3rem; /* Ajusta el padding para pantallas pequeñas */
+    }
+  }
+  

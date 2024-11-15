@@ -52,17 +52,31 @@ let getData = async () => {
 
             // Cuente el número de suscriptores registrados por fecha a partir del objeto data
             let countSubs = new Map();
+            let pilaMssj = [];
+            let pilaNombres = [];
+            let pilaCategorias = [];
+
             if (Object.keys(data).length > 0) {
                 for (let key in data) {
 
-                    let { email, saved } = data[key]
-                       
+                    let { email, message, name, product_type, saved } = data[key]
+                    
+                    if (message != undefined) {
+                        if (message.length > 0) {
+                            pilaNombres.push (name);
+                            pilaMssj.push (message);
+                            pilaCategorias.push (product_type);
+                        }
+                    }
+                    
                     let date = saved.split(",")[0]
                        
                     let count = countSubs.get(date) || 0;
                     countSubs.set(date, count + 1)
                 }
             }
+
+
 
             // END
 
@@ -80,6 +94,35 @@ let getData = async () => {
                         </tr>`
                     subscribers.innerHTML += rowTemplate
                 }
+            }
+
+            if (pilaMssj.length > 0) {
+
+                if (window.swiper) {
+                    window.swiper.destroy();
+                }
+
+                testimonios.innerHTML = '';
+
+                for (let i = 0; i < pilaMssj.length; i++) {
+                    let name = pilaNombres.pop();
+                    let msj = pilaMssj.pop();
+
+                    let activeClass = i === 0 ? 'active' : '';
+
+                    let template = `
+                        <div class="carousel-item ${activeClass}">
+                            <div class="testimonial-item text-center">
+                                <blockquote>
+                                    <p>“${msj}”</p>
+                                    <div class="review-title text-uppercase">${name}</div>
+                                </blockquote>
+                            </div>
+                        </div>`;
+
+                    testimonios.innerHTML += template;
+                }
+
             }
 
             // END
