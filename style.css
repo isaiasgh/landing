@@ -791,11 +791,14 @@ a {
 /* - Swiper Slide Arrows 1
 ------------------------------------------------------------- */
 .icon-arrow {
+  transform: translateY(-50%); /* Ajuste para el centrado */
+  z-index: 10; /* Asegúrate de que estén sobre el carrusel */
+
   position: absolute;
   top: 50%;
   font-size: 2em;
   color: var(--dark-color);
-  z-index: 8;
+  /* z-index: 8; */
   width: 130px;
   height: 130px;
   border-radius: 50%;
