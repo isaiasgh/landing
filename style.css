@@ -1540,3 +1540,119 @@ a.btn-link.text-light:after {
   background-size: cover;
   transition: transform .3s ease-out;
 }
+
+
+
+
+.product-image {
+  height: 450px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.banner {
+  width: 100%;
+  object-fit: cover;
+  height: 500px;
+}
+
+.contenedor-P {
+  padding: 20px 20px;
+}
+
+.banner-blog {
+  width: 100%;
+  object-fit: cover;
+  height: 350px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(180deg) brightness(0.5);
+}
+
+.testimonial-item {
+  padding: 0 10rem; /* Padding grande para pantallas grandes */
+}
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .testimonial-item {
+    padding: 0 2.3rem; /* Ajusta el padding para pantallas pequeñas */
+  }
+}
+
+body {
+  background-color: black;
+}
+
+.nav-element {
+  color:#717173;
+  
+}
+
+.nav-link {
+  color:#5c5c5d;
+}
+
+.nav-link:hover {
+  color:white;
+}
+
+.navmenu{
+  background-color: #1c1c1c;
+}
+
+.main-text, .categoria {
+  color: #b0b0b0;
+}
+
+.ts-section-info {
+  background-color: black;
+}
+
+.ts-section-info h3, .pasos, h4 {
+  color: white;
+}
+
+.ts-section-info p {
+  /* color: ; */
+}
+
+.imp-sect {
+  background-color: #2b2b2c;
+}
+
+h1, a, h3 {
+  color: white;
+}
+
+#billboard, #comentarios {
+  background-color: #2b2b2c;
+}
+
+#comentarios h3 {
+  color: white;
+}
+
+.newsletter {
+  background-color: #1c1c1c;
+}
+
+.custom-button {
+  background-color: #7b1212;
+  color: #b0b0b0;
+}
+
+.custom-button:hover {
+  background-color: #5c0a0a;
+  color: #b0b0b0;
+}
+
+.link-element:hover {
+  color: white !important;
+}
+
+#titulo-contenedor {
+  display: flex;
+}
