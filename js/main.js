@@ -98,7 +98,7 @@ let getData = async () => {
 
                 testimonios.innerHTML = '';
 
-                for (let i = 0; i < 5; i++) {
+                for (let i = 0; i < 7; i++) {
                     let name = pilaNombres.pop();
                     let msj = pilaMssj.pop();
 
