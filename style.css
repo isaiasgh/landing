@@ -1659,3 +1659,7 @@ h1, a, h3 {
 #titulo-contenedor {
   display: flex;
 }
+
+#text, .tx {
+  color: white;
+}

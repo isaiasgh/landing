@@ -13,98 +13,92 @@ let sendData = () => {
     data['saved'] = new Date().toLocaleString('es-CO', { timeZone: 'America/Guayaquil' })
 
     fetch(databaseURL, {
-        method: 'POST', // Método de la solicitud
+        method: 'POST',
         headers: {
-            'Content-Type': 'application/json' // Especifica que los datos están en formato JSON
+            'Content-Type': 'application/json'
         },
-        body: JSON.stringify(data) // Convierte los datos a JSON
+        body: JSON.stringify(data)
     })
     .then(response => {
         if (!response.ok) {
             throw new Error(`Error en la solicitud: ${response.statusText}`);
         }
-        return response.json(); // Procesa la respuesta como JSON
+        return response.json();
     })
     .then(result => {
-        alert('Agradeciendo tu preferencia, nos mantenemos actualizados y enfocados en atenderte como mereces'); // Maneja la respuesta con un mensaje
+        alert('Agradeciendo tu preferencia, nos mantenemos actualizados y enfocados en atenderte como mereces'); 
         form.reset()
         getData ();
     })
     .catch(error => {
-        alert('Hemos experimentado un error. ¡Vuelve pronto!'); // Maneja el error con un mensaje
+        alert('Hemos experimentado un error. ¡Vuelve pronto!'); 
     });
 }
 
 let getData = async () => {
     try {
-        // Realiza la petición fetch a la URL de la base de datos
         const response = await fetch(databaseURL);
 
-        // Verifica si la respuesta es exitosa
         if (!response.ok) {
-          alert('Hemos experimentado un error. ¡Vuelve pronto!'); // Maneja el error con un mensaje
+            alert('Hemos experimentado un error. ¡Vuelve pronto!');
+            return;
         }
 
-        // Convierte la respuesta en formato JSON
         const data = await response.json();
 
-        if(data != null) {
-
-            // Cuente el número de suscriptores registrados por fecha a partir del objeto data
+        if (data != null) {
             let countSubs = new Map();
             let pilaMssj = [];
             let pilaNombres = [];
             let pilaCategorias = [];
+            let categoryRatings = new Map();
 
             if (Object.keys(data).length > 0) {
                 for (let key in data) {
+                    let { email, message, name, product_type, rating, saved } = data[key];
 
-                    let { email, message, name, product_type, saved } = data[key]
-                    
-                    if (message != undefined) {
-                        if (message.length > 0) {
-                            pilaNombres.push (name);
-                            pilaMssj.push (message);
-                            pilaCategorias.push (product_type);
-                        }
+                    if (message != undefined && message.length > 0) {
+                        pilaNombres.push(name);
+                        pilaMssj.push(message);
+                        pilaCategorias.push(product_type);
                     }
-                    
-                    let date = saved.split(",")[0]
-                       
+
+                    let date = saved.split(",")[0];
                     let count = countSubs.get(date) || 0;
-                    countSubs.set(date, count + 1)
+                    countSubs.set(date, count + 1);
+
+                    if (product_type && rating) {
+                        let categoryData = categoryRatings.get(product_type) || { sum: 0, count: 0 };
+                        categoryData.sum += parseInt(rating);
+                        categoryData.count += 1;
+                        categoryRatings.set(product_type, categoryData);
+                    }
                 }
             }
 
+            if (categoryRatings.size > 0) {
+                const tableBody = document.querySelector('#subscribers');
+                tableBody.innerHTML = '';
 
-
-            // END
-
-            // Genere y agregue filas de una tabla HTML para mostrar fechas y cantidades de suscriptores almacenadas 
-
-            if (countSubs.size > 0) {
-                subscribers.innerHTML = ''
-
-                for (let [date, count] of countSubs) {
+                for (let [category, data] of categoryRatings) {
+                    let average = (data.sum / data.count).toFixed(1);
                     let rowTemplate = `
                         <tr>
-                            <th scope="row">1</th>
-                            <td>${date}</td>
-                            <td>${count}</td>
-                        </tr>`
-                    subscribers.innerHTML += rowTemplate
+                            <td>${category}</td>
+                            <td>${average}</td>
+                        </tr>`;
+                    tableBody.innerHTML += rowTemplate;
                 }
             }
 
             if (pilaMssj.length > 0) {
-
                 if (window.swiper) {
                     window.swiper.destroy();
                 }
 
                 testimonios.innerHTML = '';
 
-                for (let i = 0; i < pilaMssj.length; i++) {
+                for (let i = 0; i < 5; i++) {
                     let name = pilaNombres.pop();
                     let msj = pilaMssj.pop();
 
@@ -122,18 +116,12 @@ let getData = async () => {
 
                     testimonios.innerHTML += template;
                 }
-
             }
-
-            // END
         }
-
-      } catch (error) {
-        // Muestra cualquier error que ocurra durante la petición
-        alert('Hemos experimentado un error. ¡Vuelve pronto!'); // Maneja el error con un mensaje
+    } catch (error) {
+        alert('Hemos experimentado un error. ¡Vuelve pronto!');
     }
-}
-
+};
 
 let loaded = () => {
     let myForm = document.getElementById("form");
@@ -165,6 +153,10 @@ let loaded = () => {
         sendData();
    
    })
+}
+
+function updateRatingValue(value) {
+    document.getElementById('rating_value').textContent = value + '/5';
 }
 
 window.addEventListener("DOMContentLoaded", ready);
